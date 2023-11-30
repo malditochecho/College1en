@@ -25,8 +25,7 @@ namespace College1en
         // WHEN HOME FORM LOADS
         private void Form1_Load(object sender, EventArgs e)
         {
-            new NewStudent();
-            new UpdateStudent();
+            new UpsertStudent();
             new UpsertCourse();
             new UpsertProgram();
             dataGridView1.ReadOnly = true;
@@ -43,7 +42,29 @@ namespace College1en
             dataGridView1.DataSource = Students.GetData();
         }
 
-        private void buttonDelete_Click(object sender, EventArgs e)
+        private void insertToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            UpsertStudent.current.Start(UpsertStudent.Modes.INSERT, null);
+        }
+
+        private void updateToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            DataGridViewSelectedRowCollection collection = dataGridView1.SelectedRows;
+            if (collection.Count == 0)
+            {
+                MessageBox.Show("A line must be selected for update");
+            }
+            else if (collection.Count > 1)
+            {
+                MessageBox.Show("Only one line must be selected for update");
+            }
+            else // only 1 selected
+            {
+                UpsertStudent.current.Start(UpsertStudent.Modes.UPDATE, collection);
+            }
+        }
+
+        private void deleteToolStripMenuItem3_Click(object sender, EventArgs e)
         {
             DataGridViewSelectedRowCollection col = dataGridView1.SelectedRows;
             if (col.Count == 0)
@@ -59,28 +80,6 @@ namespace College1en
                 }
                 Students.DeleteData(lId);
             }
-        }
-
-        private void buttonUpdate_Click(object sender, EventArgs e)
-        {
-            DataGridViewSelectedRowCollection collection = dataGridView1.SelectedRows;
-            if (collection.Count == 0)
-            {
-                MessageBox.Show("A line must be selected for update");
-            }
-            else if (collection.Count > 1)
-            {
-                MessageBox.Show("Only one line must be selected for update");
-            }
-            else // only 1 selected
-            {
-                UpdateStudent.current.Start(collection);
-            }
-        }
-
-        private void buttonCreate_Click(object sender, EventArgs e)
-        {
-            NewStudent.current.Start();
         }
 
         // COURSES MANAGEMENT

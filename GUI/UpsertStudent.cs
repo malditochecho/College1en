@@ -4,7 +4,7 @@ using College1en.DAL;
 
 namespace College1en.GUI
 {
-    public partial class UpsertCourse : Form
+    public partial class UpsertStudent : Form
     {
         internal enum Modes
         {
@@ -12,10 +12,10 @@ namespace College1en.GUI
             UPDATE
         }
 
-        internal static UpsertCourse current;
+        internal static UpsertStudent current;
         private Modes mode = Modes.INSERT;
 
-        public UpsertCourse()
+        public UpsertStudent()
         {
             current = this;
             InitializeComponent();
@@ -27,9 +27,9 @@ namespace College1en.GUI
 
             if (mode == Modes.INSERT)
             {
-                textBoxCourseId.ReadOnly = false;
-                textBoxCourseId.Text = "";
-                textBoxCourseName.Text = "";
+                textBoxStudentId.ReadOnly = false;
+                textBoxStudentId.Text = "";
+                textBoxStudentName.Text = "";
                 comboBoxProgram.DataSource = Programs.GetData();
                 comboBoxProgram.DisplayMember = "ProgName";
                 comboBoxProgram.ValueMember = "ProgId";
@@ -38,9 +38,9 @@ namespace College1en.GUI
 
             if (mode == Modes.UPDATE)
             {
-                textBoxCourseId.ReadOnly = true;
-                textBoxCourseId.Text = "" + collection[0].Cells["CId"].Value;
-                textBoxCourseName.Text = "" + collection[0].Cells["CName"].Value;
+                textBoxStudentId.ReadOnly = true;
+                textBoxStudentId.Text = "" + collection[0].Cells["StId"].Value;
+                textBoxStudentName.Text = "" + collection[0].Cells["StName"].Value;
                 comboBoxProgram.DataSource = Programs.GetData();
                 comboBoxProgram.DisplayMember = "ProgName";
                 comboBoxProgram.ValueMember = "ProgId";
@@ -50,16 +50,16 @@ namespace College1en.GUI
             ShowDialog();
         }
 
-        private void buttonOk_Click(object sender, EventArgs e)
+        private void buttonCreate_Click(object sender, EventArgs e)
         {
-            Course course = new Course();
+            Student student = new Student();
 
-            course.CId = textBoxCourseId.Text;
-            course.CName = textBoxCourseName.Text;
-            course.ProgId = comboBoxProgram.SelectedValue.ToString();
+            student.StId = textBoxStudentId.Text;
+            student.StName = textBoxStudentName.Text;
+            student.ProgId = comboBoxProgram.SelectedValue.ToString();
 
-            if (mode == Modes.INSERT) { Courses.InsertData(course); }
-            if (mode == Modes.UPDATE) { Courses.UpdateData(course); }
+            if (mode == Modes.INSERT) { Students.InsertData(student); }
+            if (mode == Modes.UPDATE) { Students.UpdateData(student); }
 
             Close();
         }

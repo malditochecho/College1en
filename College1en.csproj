@@ -52,18 +52,6 @@
     <Compile Include="DAL\Enrollments.cs" />
     <Compile Include="DAL\Programs.cs" />
     <Compile Include="DAL\Students.cs" />
-    <Compile Include="GUI\NewStudent.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\NewStudent.Designer.cs">
-      <DependentUpon>NewStudent.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\UpdateStudent.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\UpdateStudent.Designer.cs">
-      <DependentUpon>UpdateStudent.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\UpsertCourse.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +64,12 @@
     <Compile Include="GUI\UpsertProgram.Designer.cs">
       <DependentUpon>UpsertProgram.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\UpsertStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\UpsertStudent.Designer.cs">
+      <DependentUpon>UpsertStudent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,17 +78,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="GUI\NewStudent.resx">
-      <DependentUpon>NewStudent.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\UpdateStudent.resx">
-      <DependentUpon>UpdateStudent.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="GUI\UpsertCourse.resx">
       <DependentUpon>UpsertCourse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\UpsertProgram.resx">
       <DependentUpon>UpsertProgram.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UpsertStudent.resx">
+      <DependentUpon>UpsertStudent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
