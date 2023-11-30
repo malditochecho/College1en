@@ -28,6 +28,7 @@ namespace College1en
             new NewStudent();
             new UpdateStudent();
             new UpsertCourse();
+            new UpsertProgram();
             dataGridView1.ReadOnly = true;
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
@@ -133,6 +134,46 @@ namespace College1en
         private void programsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             dataGridView1.DataSource = Programs.GetData();
+        }
+
+        private void insertToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            UpsertProgram.current.Start(UpsertProgram.Modes.INSERT, null);
+        }
+
+        private void updateToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            DataGridViewSelectedRowCollection collection = dataGridView1.SelectedRows;
+            if (collection.Count == 0)
+            {
+                MessageBox.Show("A line must be selected for update");
+            }
+            else if (collection.Count > 1)
+            {
+                MessageBox.Show("Only one line must be selected for update");
+            }
+            else // only 1 selected
+            {
+                UpsertProgram.current.Start(UpsertProgram.Modes.UPDATE, collection);
+            }
+        }
+
+        private void deleteToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            DataGridViewSelectedRowCollection collection = dataGridView1.SelectedRows;
+            if (collection.Count == 0)
+            {
+                MessageBox.Show("At least one line must be selected for deletion");
+            }
+            else // 1 or more selected
+            {
+                List<string> lId = new List<string>();
+                for (int i = 0; i < collection.Count; i++)
+                {
+                    lId.Add((string)collection[i].Cells["ProgId"].Value);
+                }
+                Programs.DeleteData(lId);
+            }
         }
 
         // ENROLLMENTS MANAGEMENT

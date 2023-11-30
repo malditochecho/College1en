@@ -4,9 +4,6 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using College1en.DAL;
 
 namespace College1en.DAL
 {
