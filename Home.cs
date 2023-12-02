@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -25,6 +26,7 @@ namespace College1en
         // WHEN HOME FORM LOADS
         private void Form1_Load(object sender, EventArgs e)
         {
+            new UpsertEnrollment();
             new UpsertStudent();
             new UpsertCourse();
             new UpsertProgram();
@@ -180,6 +182,54 @@ namespace College1en
         private void enrollmentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             dataGridView1.DataSource = Enrollments.GetData();
+        }
+
+        private void addStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UpsertEnrollment.current.Start(UpsertEnrollment.Modes.INSERT, null);
+        }
+
+        private void modifyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataGridViewSelectedRowCollection collection = dataGridView1.SelectedRows;
+            if (collection.Count == 0)
+            {
+                MessageBox.Show("A line must be selected for update");
+            }
+            else if (collection.Count > 1)
+            {
+                MessageBox.Show("Only one line must be selected for update");
+            }
+            else // only 1 selected
+            {
+                UpsertEnrollment.current.Start(UpsertEnrollment.Modes.UPDATE, collection);
+            }
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataGridViewSelectedRowCollection collection = dataGridView1.SelectedRows;
+            if (collection.Count == 0)
+            {
+                MessageBox.Show("At least one line must be selected for deletion");
+            }
+            else // 1 or more selected
+            {
+                List<Enrollment> lId = new List<Enrollment>();
+                foreach (DataGridViewRow row in collection)
+                {
+                    Enrollment enrollment = new Enrollment();
+                    enrollment.StId = row.Cells["StId"].Value.ToString();
+                    enrollment.CId = row.Cells["CId"].Value.ToString();
+                    lId.Add(enrollment);
+                }
+                Enrollments.DeleteData(lId);
+            }
+        }
+
+        private void manageFinalGradeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
 
         // OTHERS

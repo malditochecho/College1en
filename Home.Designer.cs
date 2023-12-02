@@ -42,7 +42,7 @@
             this.updateToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.enrollmentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.addStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modifyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageFinalGradeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -165,7 +165,7 @@
             // enrollmentsToolStripMenuItem
             // 
             this.enrollmentsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
+            this.addStripMenuItem,
             this.modifyToolStripMenuItem,
             this.deleteToolStripMenuItem,
             this.manageFinalGradeToolStripMenuItem});
@@ -174,29 +174,33 @@
             this.enrollmentsToolStripMenuItem.Text = "Enrollments";
             this.enrollmentsToolStripMenuItem.Click += new System.EventHandler(this.enrollmentsToolStripMenuItem_Click);
             // 
-            // toolStripMenuItem1
+            // addStripMenuItem
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(179, 22);
-            this.toolStripMenuItem1.Text = "Add";
+            this.addStripMenuItem.Name = "addStripMenuItem";
+            this.addStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addStripMenuItem.Text = "Add";
+            this.addStripMenuItem.Click += new System.EventHandler(this.addStripMenuItem_Click);
             // 
             // modifyToolStripMenuItem
             // 
             this.modifyToolStripMenuItem.Name = "modifyToolStripMenuItem";
-            this.modifyToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.modifyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.modifyToolStripMenuItem.Text = "Modify";
+            this.modifyToolStripMenuItem.Click += new System.EventHandler(this.modifyToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // manageFinalGradeToolStripMenuItem
             // 
             this.manageFinalGradeToolStripMenuItem.Name = "manageFinalGradeToolStripMenuItem";
-            this.manageFinalGradeToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.manageFinalGradeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.manageFinalGradeToolStripMenuItem.Text = "Manage Final Grade";
+            this.manageFinalGradeToolStripMenuItem.Click += new System.EventHandler(this.manageFinalGradeToolStripMenuItem_Click);
             // 
             // dataGridView1
             // 
@@ -237,7 +241,7 @@
         private System.Windows.Forms.ToolStripMenuItem programsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem enrollmentsToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem addStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modifyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manageFinalGradeToolStripMenuItem;
