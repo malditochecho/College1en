@@ -34,6 +34,7 @@ namespace College1en
             dataGridView1.RowHeadersVisible = true;
             dataGridView1.Dock = DockStyle.None;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            //dataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.Fill);
         }
 
         // STUDENTS MANAGEMENT
@@ -178,7 +179,7 @@ namespace College1en
         // ENROLLMENTS MANAGEMENT
         private void enrollmentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            dataGridView1.DataSource = Enrollments.GetData();
         }
 
         // OTHERS
