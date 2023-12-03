@@ -51,6 +51,20 @@ namespace College1en.DAL
 
         internal static void UpdateData(Enrollment originalEnrollment, Enrollment newEnrollment)
         {
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            {
+                string insertQuery = "UPDATE Enrollments SET CId = @newCId WHERE StId = @StId AND CId = @oldCId";
+                SqlCommand command = new SqlCommand(insertQuery, connection);
+                command.Parameters.Add("@newCId", SqlDbType.VarChar, 7).Value = newEnrollment.CId;
+                command.Parameters.Add("@StId", SqlDbType.VarChar, 10).Value = originalEnrollment.StId;
+                command.Parameters.Add("@oldCId", SqlDbType.VarChar, 7).Value = originalEnrollment.CId;
+                connection.Open();
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+            ds.Clear();
+            adapter.Fill(ds, "Enrollments");
+            adapter.Update(ds.Tables["Enrollments"]);
         }
 
         internal static void DeleteData(List<Enrollment> enrollmentsToDelete)
