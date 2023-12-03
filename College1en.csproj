@@ -52,6 +52,12 @@
     <Compile Include="DAL\Enrollments.cs" />
     <Compile Include="DAL\Programs.cs" />
     <Compile Include="DAL\Students.cs" />
+    <Compile Include="GUI\FinalGrade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\FinalGrade.Designer.cs">
+      <DependentUpon>FinalGrade.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\UpsertEnrollment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +90,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GUI\FinalGrade.resx">
+      <DependentUpon>FinalGrade.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\UpsertEnrollment.resx">
       <DependentUpon>UpsertEnrollment.cs</DependentUpon>
     </EmbeddedResource>

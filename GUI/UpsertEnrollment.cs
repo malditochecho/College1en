@@ -32,14 +32,16 @@ namespace College1en.GUI
 
             if (mode == Modes.INSERT)
             {
+                comboBoxStudentId.Enabled = true;
                 comboBoxStudentId.DataSource = Students.GetData();
                 comboBoxStudentId.DisplayMember = "StId";
                 comboBoxStudentId.ValueMember = "StName";
                 comboBoxStudentId.SelectedValue = "";
-                
+
                 textBoxStudentName.ReadOnly = true;
                 textBoxStudentName.Text = "";
 
+                comboBoxCourseId.Enabled = true;
                 comboBoxCourseId.DataSource = Courses.GetData();
                 comboBoxCourseId.DisplayMember = "CId";
                 comboBoxCourseId.ValueMember = "CName";
@@ -51,11 +53,11 @@ namespace College1en.GUI
 
             if (mode == Modes.UPDATE)
             {
+                comboBoxStudentId.Enabled = false;
                 comboBoxStudentId.DataSource = Students.GetData();
                 comboBoxStudentId.DisplayMember = "StId";
                 comboBoxStudentId.ValueMember = "StName";
                 comboBoxStudentId.SelectedValue = collection[0].Cells["StName"].Value;
-                comboBoxStudentId.Enabled = false;
 
                 textBoxStudentName.ReadOnly = true;
                 textBoxStudentName.Text = collection[0].Cells["StName"].Value.ToString();
@@ -68,6 +70,7 @@ namespace College1en.GUI
                 textBoxCourseName.ReadOnly = true;
                 textBoxCourseName.Text = collection[0].Cells["CName"].Value.ToString();
 
+                // information about the original enrollment and the modified one
                 originalEnrollment.StId = collection[0].Cells["StId"].Value.ToString();
                 originalEnrollment.CId = comboBoxCourseId.Text.ToString();
             }

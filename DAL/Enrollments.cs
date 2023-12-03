@@ -87,6 +87,24 @@ namespace College1en.DAL
             adapter.Update(ds.Tables["Enrollments"]);
         }
 
+        internal static void SaveGrade(Enrollment enrollment)
+        {
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            {
+                string updateQuery = "UPDATE Enrollments SET FinalGrade = @newGrade WHERE StId = @StId AND CId = @CId";
+                SqlCommand command = new SqlCommand(updateQuery, connection);
+                command.Parameters.Add("@StId", SqlDbType.VarChar, 10).Value = enrollment.StId;
+                command.Parameters.Add("@CId", SqlDbType.VarChar, 7).Value = enrollment.CId;
+                command.Parameters.Add("@newGrade", SqlDbType.Int).Value = enrollment.FinalGrade;
+                connection.Open();
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+            ds.Clear();
+            adapter.Fill(ds, "Enrollments");
+            adapter.Update(ds.Tables["Enrollments"]);
+        }
+
     }
 
     internal class Enrollment

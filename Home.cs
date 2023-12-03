@@ -30,6 +30,7 @@ namespace College1en
             new UpsertStudent();
             new UpsertCourse();
             new UpsertProgram();
+            new FinalGrade();
             dataGridView1.ReadOnly = true;
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
@@ -229,7 +230,19 @@ namespace College1en
 
         private void manageFinalGradeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            DataGridViewSelectedRowCollection collection = dataGridView1.SelectedRows;
+            if (collection.Count == 0)
+            {
+                MessageBox.Show("At least one line must be selected");
+            }
+            else if (collection.Count > 1)
+            {
+                MessageBox.Show("Only one line must be selected");
+            }
+            else // only 1 selected
+            {
+                FinalGrade.current.Start(collection);
+            }
         }
 
         // OTHERS
